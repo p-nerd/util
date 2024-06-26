@@ -1,7 +1,7 @@
 {
     "name": "p-nerd/util",
     "description": "The object oriented wrapper around php functions",
-    "type": "project",
+    "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
