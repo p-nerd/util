@@ -1,5 +1,7 @@
 <?php
 
+namespace PNerd\Util;
+
 class PArray
 {
     public function __construct(
