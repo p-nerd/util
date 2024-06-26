@@ -6,6 +6,7 @@
     "autoload": {
         "psr-4": {
             "PNerd\\Util\\": "src/"
+            "PNerd\\Test\\": "test/"
         }
     },
     "authors": [
@@ -14,5 +15,7 @@
             "email": "shihab4t@gmail.com"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "phpunit/phpunit": "^11.2"
+    }
 }
