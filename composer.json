@@ -6,7 +6,6 @@
     "autoload": {
         "psr-4": {
             "PNerd\\Util\\": "src/"
-            "PNerd\\Test\\": "test/"
         }
     },
     "authors": [
