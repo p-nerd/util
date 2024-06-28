@@ -10,13 +10,21 @@ describe('filter', function () {
 
         expect($result)->toBe($expected);
     })->with([
-        'empty input' => [[], fn ($value, $key) => $value % 2 === 0, []],
-        'all elements filtered out' => [[1, 3, 5, 7], fn ($value, $key) => $value % 2 === 0, []],
-        'all elements passing' => [[2, 4, 6, 8], fn ($value, $key) => $value % 2 === 0, [2, 4, 6, 8]],
-        'mixed data types' => [[1, "2", 3.0, false, null], fn ($value, $key) => is_int($value), [1]],
-        'large array' => [range(1, 10000), fn ($value, $key) => $value % 2 === 0, range(2, 10000, 2)],
-        're-indexed array' => [[10, 20, 30, 40, 50], fn ($value, $key) => $value > 20, [30, 40, 50]],
+        'empty input' => [[], fn ($value) => $value % 2 === 0, []],
+        'all elements filtered out' => [[1, 3, 5, 7], fn ($value) => $value % 2 === 0, []],
+        'all elements passing' => [[2, 4, 6, 8], fn ($value) => $value % 2 === 0, [2, 4, 6, 8]],
+        'mixed data types' => [[1, "2", 3.0, false, null], fn ($value) => is_int($value), [1]],
+        'large array' => [range(1, 10000), fn ($value) => $value % 2 === 0, range(2, 10000, 2)],
+        're-indexed array' => [[10, 20, 30, 40, 50], fn ($value) => $value > 20, [30, 40, 50]],
     ]);
+
+    it('can filter the array with correct index', function () {
+        $array = [10, 20, 30, 40, 50];
+        $pArray = new PArray($array);
+        $result = $pArray->filter(fn ($value) => $value > 20)->get();
+        $keys = array_keys($result);
+        expect($keys)->toBe([0, 1, 2]);
+    });
 });
 
 describe('find', function () {
