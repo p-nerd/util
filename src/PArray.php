@@ -25,20 +25,34 @@ class PArray
     }
 
     /**
-     * Returns the array.
+     * Returns the current array.
      *
-     * @return array The filtered array.
+     * @return array The current array.
      */
     public function get(): array
     {
         return $this->array;
     }
 
+    /**
+     * Returns the length of the array.
+     *
+     * @return int The number of elements in the array.
+     */
     public function length(): int
     {
         return count($this->array);
     }
 
+    /**
+     * Maps each element in the array to a new value using a callback function.
+     *
+     * The callback function receives two parameters: the element's value and its key.
+     * It should return the transformed value for each element.
+     *
+     * @param callable $callback The callback function to apply to each element.
+     * @return $this The current instance of PArray, with mapped values.
+     */
     public function map(callable $callback): self
     {
         $this->array = array_map(
@@ -49,16 +63,15 @@ class PArray
         return $this;
     }
 
-
     /**
      * Filters the array using a callback function.
      *
-     * The callback function should take two parameters: the value and the key of each element in the array.
-     * The callback should return true to keep the element in the array, or false to remove it.
-     * After filtering, the keys are re-indexed.
+     * The callback function should take two parameters: the element's value and its key.
+     * It should return true to keep the element in the array, or false to remove it.
+     * After filtering, the keys of the array are re-indexed sequentially.
      *
-     * @param callable $callback The callback function to use for filtering.
-     * @return $this The current instance for method chaining.
+     * @param callable $callback The callback function used to filter elements.
+     * @return $this The current instance of PArray, with filtered elements.
      */
     public function filter(callable $callback): self
     {
@@ -68,12 +81,8 @@ class PArray
             ARRAY_FILTER_USE_BOTH
         );
 
-        // Re-index the array
-        $array = [];
-        foreach ($this->array as $key => $value) {
-            $array[] = $value;
-        }
-        $this->array = $array;
+        // Re-index the array sequentially
+        $this->array = array_values($this->array);
 
         return $this;
     }
@@ -81,11 +90,11 @@ class PArray
     /**
      * Finds the first element in the array that satisfies the callback function.
      *
-     * The callback function should take two parameters: the value and the key of each element in the array.
-     * The callback should return true to find the element, or false to continue searching.
+     * The callback function should take two parameters: the element's value and its key.
+     * It should return true to indicate the element is found, or false otherwise.
      *
-     * @param callable $callback The callback function to use for finding an element.
-     * @return mixed|null The first element that satisfies the callback, or null if no element is found.
+     * @param callable $callback The callback function used to find an element.
+     * @return mixed|null The first element found that satisfies the callback, or null if none found.
      */
     public function find(callable $callback)
     {

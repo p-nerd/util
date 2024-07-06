@@ -69,7 +69,6 @@ describe('filter', function () {
 });
 
 describe('find', function () {
-
     it('can find an element', function ($array, $callback, $expected) {
         $pArray = new PArray($array);
 
@@ -82,4 +81,13 @@ describe('find', function () {
         'all elements same' => [[2, 2, 2, 2], fn ($value, $key) => $value === 2, 2],
         'large array' => [range(1, 10000), fn ($value, $key) => $value === 5000, 5000],
     ]);
+
+    it('is find giving correct key on the callback', function () {
+        $array = [0, 1, 2, 3, 4, 5];
+        $pArray = new PArray($array);
+        $pArray->find(function ($value, $key) {
+            expect($key)->toBe($value);
+            return false;
+        });
+    });
 });
