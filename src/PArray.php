@@ -25,6 +25,32 @@ class PArray
     }
 
     /**
+     * Returns the array.
+     *
+     * @return array The filtered array.
+     */
+    public function get(): array
+    {
+        return $this->array;
+    }
+
+    public function length(): int
+    {
+        return count($this->array);
+    }
+
+    public function map(callable $callback): self
+    {
+        $this->array = array_map(
+            fn ($value, $key) => $callback($value, $key),
+            $this->array,
+            array_keys($this->array)  // Include keys for array_map
+        );
+        return $this;
+    }
+
+
+    /**
      * Filters the array using a callback function.
      *
      * The callback function should take two parameters: the value and the key of each element in the array.
@@ -69,15 +95,5 @@ class PArray
             }
         }
         return null;
-    }
-
-    /**
-     * Returns the array.
-     *
-     * @return array The filtered array.
-     */
-    public function get(): array
-    {
-        return $this->array;
     }
 }
