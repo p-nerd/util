@@ -1,8 +1,12 @@
-# util
+# [util](https://packagist.org/packages/p-nerd/util)
 
 The object oriented wrapper around php functions
 
 ## Installation
+
+```sh
+composer require p-nerd/util
+```
 
 ## Usage
 
