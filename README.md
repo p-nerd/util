@@ -1,6 +1,6 @@
 # [util](https://packagist.org/packages/p-nerd/util)
 
-The object oriented wrapper around php functions
+The object-oriented wrapper around PHP array functions.
 
 ## Installation
 
@@ -8,11 +8,13 @@ The object oriented wrapper around php functions
 composer require p-nerd/util
 ```
 
-## Example usage
+## Example Usage
 
 ### PArray 
 
 ```php
+use PNerd\Util\PArray;
+
 // Example usage of PArray
 $array = [1, 2, 3, 4, 5];
 $pArray = new PArray($array);
