@@ -2,6 +2,8 @@
 
 The object-oriented wrapper around PHP array functions.
 
+This package offers a curated, organized, and consistent object-oriented API for PHP functions.
+
 ## Installation
 
 ```sh
