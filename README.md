@@ -1,6 +1,6 @@
 # [util](https://packagist.org/packages/p-nerd/util)
 
-The object-oriented wrapper around PHP array functions.
+The object-oriented wrapper around PHP functions.
 
 This package offers a curated, organized, and consistent object-oriented API for PHP functions.
 
