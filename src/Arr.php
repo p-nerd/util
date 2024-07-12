@@ -2,10 +2,12 @@
 
 namespace PNerd\Util;
 
+use PNerd\Util\Contracts\Arr as ContractsArr;
+
 /**
  * A utility class for performing operations on arrays.
  */
-class PArray implements \PNerd\Util\Contracts\PArray
+class Arr implements ContractsArr
 {
     /**
      * @var array The array to be operated on.
@@ -49,7 +51,7 @@ class PArray implements \PNerd\Util\Contracts\PArray
     /**
      * Checks if a value exists in the array.
      */
-    public function isExist($item): bool
+    public function exist($item): bool
     {
         return in_array($item, $this->array);
     }

@@ -2,13 +2,13 @@
 
 namespace PNerd\Util\Contracts;
 
-interface PArray
+interface Arr
 {
     // Basic Array Information
     function length(): int; // 1
     function keys(): array; // 2
     function values(): array; // 3
-    function isExist($item): bool; // 4
+    function exist($item): bool; // 4
     function find(callable $callback): mixed; // 5
 
     // Array Retrieval

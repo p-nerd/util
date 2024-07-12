@@ -1,12 +1,12 @@
 <?php
 
-use PNerd\Util\PArray;
+use PNerd\Util\Arr;
 
 describe('map', function () {
     it('can map the array', function ($array, $callback, $expected) {
-        $pArray = new PArray($array);
+        $arr = new Arr($array);
 
-        $result = $pArray->map($callback)->get();
+        $result = $arr->map($callback)->get();
 
         expect($result)->toBe($expected);
     })->with([
@@ -18,8 +18,8 @@ describe('map', function () {
 
     it('is map giving correct key on the callback', function () {
         $array = [0, 1, 2, 3, 4, 5];
-        $pArray = new PArray($array);
-        $pArray->map(function ($value, $key) {
+        $arr = new Arr($array);
+        $arr->map(function ($value, $key) {
             expect($key)->toBe($value);
             return $value;
         });
@@ -27,8 +27,8 @@ describe('map', function () {
 
     it('can map the array with correct index', function () {
         $array = [10, 20, 30, 40, 50];
-        $pArray = new PArray($array);
-        $result = $pArray->map(fn ($value) => $value * 2)->get();
+        $arr = new Arr($array);
+        $result = $arr->map(fn ($value) => $value * 2)->get();
         $keys = array_keys($result);
         expect($keys)->toBe([0, 1, 2, 3, 4]);
     });
@@ -36,9 +36,9 @@ describe('map', function () {
 
 describe('filter', function () {
     it('can filter the array', function ($array, $callback, $expected) {
-        $pArray = new PArray($array);
+        $arr = new Arr($array);
 
-        $result = $pArray->filter($callback)->get();
+        $result = $arr->filter($callback)->get();
 
         expect($result)->toBe($expected);
     })->with([
@@ -52,8 +52,8 @@ describe('filter', function () {
 
     it('is filter giving correct key on the callback', function () {
         $array = [0, 1, 2, 3, 4, 5];
-        $pArray = new PArray($array);
-        $pArray->filter(function ($value, $key) {
+        $arr = new Arr($array);
+        $arr->filter(function ($value, $key) {
             expect($key)->toBe($value);
             return true;
         });
@@ -61,8 +61,8 @@ describe('filter', function () {
 
     it('can filter the array with correct index', function () {
         $array = [10, 20, 30, 40, 50];
-        $pArray = new PArray($array);
-        $result = $pArray->filter(fn ($value) => $value > 20)->get();
+        $arr = new Arr($array);
+        $result = $arr->filter(fn ($value) => $value > 20)->get();
         $keys = array_keys($result);
         expect($keys)->toBe([0, 1, 2]);
     });
@@ -70,9 +70,9 @@ describe('filter', function () {
 
 describe('find', function () {
     it('can find an element', function ($array, $callback, $expected) {
-        $pArray = new PArray($array);
+        $arr = new Arr($array);
 
-        $result = $pArray->find($callback);
+        $result = $arr->find($callback);
 
         expect($result)->toBe($expected);
     })->with([
@@ -84,8 +84,8 @@ describe('find', function () {
 
     it('is find giving correct key on the callback', function () {
         $array = [0, 1, 2, 3, 4, 5];
-        $pArray = new PArray($array);
-        $pArray->find(function ($value, $key) {
+        $arr = new Arr($array);
+        $arr->find(function ($value, $key) {
             expect($key)->toBe($value);
             return false;
         });
