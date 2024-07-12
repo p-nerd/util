@@ -1,17 +1,18 @@
 <?php
 
-require __DIR__ . "/../vendor/autoload.php";
+require __DIR__ . "/../src/helpers.php";
 
-use PNerd\Util\Arr;
-use PNerd\Util\Log;
+use function PNerd\Util\arr;
+use function PNerd\Util\fmt;
 
 $array = [1, 2, 3, 4, 5];
-$arr = new Arr($array);
+$arr = arr($array);
 
-Log::log("length: ", $arr->length());
-Log::log("keys: ", $arr->keys());
-Log::log("values: ", $arr->values());
-Log::log("exist: ", $arr->exist(5) ? "5 exist" : "5 not exist");
-Log::log("find: ", $arr->find(fn ($value) => $value === 4));
 
-Log::log("get: ", $arr->get());
+fmt()->println("length: ", $arr->length());
+fmt()->println("keys: ", $arr->keys());
+fmt()->println("values: ", $arr->values());
+fmt()->println("exist: ", $arr->exist(5) ? "5 exist" : "5 not exist");
+fmt()->println("find: ", $arr->find(fn ($value) => $value === 4));
+
+fmt()->println("get: ", $arr->get());
